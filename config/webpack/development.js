@@ -32,8 +32,7 @@ export default function() {
       rules: [
         {
           test: [/\.eot(\?|$)/, /\.ttf(\?|$)/, /\.woff2?(\?|$)/, /\.png(\?|$)/, /\.gif(\?|$)/, /\.jpe?g(\?|$)/],
-          exclude: /node_modules/,
-          use: {loader: 'file-loader?name=[name].[ext]'}
+          loader: 'url-loader?limit=100000'
         },
         {
           test: /\.s?css$/,

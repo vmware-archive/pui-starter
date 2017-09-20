@@ -1,5 +1,6 @@
 const React = require('react');
 const {Actions} = require('p-flux');
+import {DefaultButton} from 'pui-react-buttons';
 
 class TodoAdder extends React.Component{
   constructor(props, context) {
@@ -24,7 +25,7 @@ class TodoAdder extends React.Component{
       <div className="todo-adder">
         <form onSubmit={this.submit}>
           <input type="text" name="todoItem" value={todoItem} onChange={this.change}/>
-          <button type="submit">Submit!</button>
+          <DefaultButton type="submit">Submit!</DefaultButton>
         </form>
       </div>
     );

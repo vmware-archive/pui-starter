@@ -1,5 +1,6 @@
 const {Actions} = require('p-flux');
 const React = require('react');
+import {DefaultButton} from 'pui-react-buttons';
 
 class UserCreatePage extends React.Component {
   constructor(props, context) {
@@ -25,7 +26,7 @@ class UserCreatePage extends React.Component {
         <h3>Create a User!</h3>
         <form onSubmit={this.submit}>
           <input type="text" name="userName" value={userName} onChange={this.change}/>
-          <button type="submit">Create User</button>
+          <DefaultButton type="submit">Create User</DefaultButton>
         </form>
       </div>
     );
