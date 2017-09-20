@@ -4,7 +4,7 @@ import HtmlWebpackIncludeAssetsPlugin from 'html-webpack-include-assets-plugin';
 import ManifestPlugin from 'webpack-manifest-plugin';
 import HotModuleReplacementPlugin from 'webpack/lib/HotModuleReplacementPlugin';
 
-export default function() {
+export default function () {
   return {
     devServer: {
       hot: true,
@@ -36,7 +36,13 @@ export default function() {
         },
         {
           test: /\.s?css$/,
-          use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+          use: ['style-loader', 'css-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: (loader) => []
+              }
+            }, 'sass-loader']
         },
         {test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader'}
       ]
@@ -45,7 +51,7 @@ export default function() {
     plugins: [
       new NoEmitOnErrorsPlugin(),
       new HtmlWebpackPlugin({title: 'ReactStarter', template: 'app/index.jsx'}),
-      new HtmlWebpackIncludeAssetsPlugin({ assets: ['config.js'], append: false, hash: true}),
+      new HtmlWebpackIncludeAssetsPlugin({assets: ['config.js'], append: false, hash: true}),
       new ManifestPlugin(),
       new HotModuleReplacementPlugin()
     ]
