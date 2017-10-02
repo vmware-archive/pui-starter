@@ -88,6 +88,7 @@
   "homepage": "https://github.com/pivotal-cf/pui-starter",
   "dependencies": {
     "pivotal-ui": "^9.0.0",
+    "react-svg-loader": "^1.1.1",
     "url-loader": "^0.5.9"
   }
 }
