@@ -1,8 +1,9 @@
 const React = require('react');
 const {Actions} = require('p-flux');
-import {DefaultButton} from 'pui-react-buttons';
+import {DefaultButton} from 'pivotal-ui/react/buttons';
+import {Input} from 'pivotal-ui/react/inputs';
 
-class TodoAdder extends React.Component{
+class TodoAdder extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {todoItem: ''};
@@ -24,7 +25,16 @@ class TodoAdder extends React.Component{
     return (
       <div className="todo-adder">
         <form onSubmit={this.submit}>
-          <input type="text" name="todoItem" value={todoItem} onChange={this.change}/>
+          <div className="form-group form-inline">
+            <label htmlFor="todo-input">Things to do</label>
+            <Input {...{
+              id: 'todo-input',
+              name: 'todoItem',
+              placeholder: 'Enter todo',
+              value: todoItem,
+              onChange: this.change
+            }}/>
+          </div>
           <DefaultButton type="submit">Submit!</DefaultButton>
         </form>
       </div>

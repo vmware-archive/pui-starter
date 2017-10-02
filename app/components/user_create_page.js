@@ -1,6 +1,7 @@
 const {Actions} = require('p-flux');
 const React = require('react');
-import {DefaultButton} from 'pui-react-buttons';
+import {DefaultButton} from 'pivotal-ui/react/buttons';
+import {Input} from 'pivotal-ui/react/inputs';
 
 class UserCreatePage extends React.Component {
   constructor(props, context) {
@@ -25,7 +26,7 @@ class UserCreatePage extends React.Component {
       <div className="user-create-page">
         <h3>Create a User!</h3>
         <form onSubmit={this.submit}>
-          <input type="text" name="userName" value={userName} onChange={this.change}/>
+          <Input type="text" name="userName" value={userName} onChange={this.change}/>
           <DefaultButton type="submit">Create User</DefaultButton>
         </form>
       </div>

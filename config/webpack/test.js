@@ -10,12 +10,17 @@ export default function() {
       rules: [
         {
           test: [/\.eot(\?|$)/, /\.ttf(\?|$)/, /\.woff2?(\?|$)/, /\.png(\?|$)/, /\.gif(\?|$)/, /\.jpe?g(\?|$)/],
-          exclude: /node_modules/,
-          use: {loader: 'file-loader?name=[name].[ext]'}
+          loader: 'url-loader?limit=100000'
         },
         {
           test: /\.s?css$/,
-          use: ExtractTextPlugin.extract({fallbackLoader: 'style-loader', loader: ['css-loader', 'postcss-loader', 'sass-loader']})
+          use: ['style-loader', 'css-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: (loader) => []
+              }
+            }, 'sass-loader']
         },
         {test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader'}
       ]

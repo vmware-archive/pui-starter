@@ -78,19 +78,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pivotal-cf/pui-react-starter.git"
+    "url": "https://github.com/pivotal-cf/pui-starter.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pivotal-cf/pui-react-starter/issues"
+    "url": "https://github.com/pivotal-cf/pui-starter/issues"
   },
-  "homepage": "https://github.com/pivotal-cf/pui-react-starter",
+  "homepage": "https://github.com/pivotal-cf/pui-starter",
   "dependencies": {
-    "pui-css-bootstrap": "^8.3.3",
-    "pui-css-buttons": "^8.3.3",
-    "pui-css-typography": "^8.3.3",
-    "pui-react-buttons": "^8.3.3",
+    "pivotal-ui": "^9.0.0",
     "url-loader": "^0.5.9"
   }
 }
