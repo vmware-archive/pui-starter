@@ -15,5 +15,6 @@ Foreman.install();
 Lint.install();
 
 Jasmine.install({
+  browserSpecRunnerOptions: {sourcemappedStacktrace: true},
   webpack: {test}
 });
