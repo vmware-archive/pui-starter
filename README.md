@@ -22,7 +22,7 @@ brew install gulp
 
 Checkout the project, install dependencies, and start foreman:
 ```bash
-git clone git@github.com:pivotal-cf/react-starter.git && cd react-starter
+git clone git@github.com:pivotal-cf/pui-starter.git && cd pui-starter
 npm install
 gulp foreman
 ```
@@ -39,6 +39,12 @@ To deploy to cloud foundry:
 1. `gulp deploy`
 
 Note that `cf push` by itself will not work. The `gulp deploy` task will compile your assets and configure the staticfile for the buildpack before doing `cf push`
+
+### Deploying without pushing
+
+To deploy to elsewhere, or just to generate a deployable app: 
+
+1. `gulp compile`
 
 ## Testing
 
@@ -124,10 +130,16 @@ will output `application.js`, `application.css`, and `index.html` into the publi
 ```bash
 NODE_ENV=production gulp assets-config
 ```
-will output `config.js` into the public folder. These assets can then be served statically.
+will output `config.js` into the public folder. These assets can then be served statically. `config.js` will regroup configuration data you put into `config/application.json` and `config/<NODE_ENV>.json`.
 
 React starter is in development mode if `NODE_ENV=development` or undefined.
 In development mode, the express server serves up `index.html`, `application.js` and `application.css`, using `webpack-dev-middleware`. `config.js` is served separately. This uses the webpack config in `config/webpack/development.js`
+
+
+#### Notes
+
+1. it is expected that users will write SASS files in `stylesheets` and external libraries will be using CSS.
+1. we use a fork of `extract-text-webpack-plugin` because of incompatibilities with `HtmlWebpackPlugin`
 
 ## Patterns
 

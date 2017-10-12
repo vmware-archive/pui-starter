@@ -40,7 +40,10 @@ export default function () {
             {
               loader: 'postcss-loader',
               options: {
-                plugins: (loader) => []
+                plugins: (loader) => [
+                  require('postcss-smart-import'),
+                  require('autoprefixer')
+                ]
               }
             }, 'sass-loader']
         },

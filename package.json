@@ -47,8 +47,10 @@
     "phantomjs-prebuilt": "^2.1.13",
     "pivotal-js-jasmine-matchers": "^0.1.1",
     "pivotal-js-react-test-helpers": "^0.1.0",
+    "pivotal-ui": "^9.0.0",
     "portastic": "^1.0.1",
     "postcss-loader": "^2.0.6",
+    "postcss-smart-import": "^0.7.5",
     "prop-types": "^15.5.10",
     "pui-cursor": "^3.0.4",
     "pui-react-tools": "^3.0.2",
@@ -56,6 +58,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-hot-loader": "^3.0.0-beta.6",
+    "react-svg-loader": "^1.1.1",
     "recluster": "^0.4.5",
     "require-dir": "^0.3.2",
     "rosie": "^1.6.0",
@@ -66,6 +69,7 @@
     "style-loader": "^0.18.2",
     "thenify": "^3.2.1",
     "url-join": "^2.0.2",
+    "url-loader": "^0.5.9",
     "vinyl": "^2.0.2",
     "webdriverio": "^4.3.0",
     "webpack": "^3.5.5",
@@ -86,9 +90,5 @@
     "url": "https://github.com/pivotal-cf/pui-starter/issues"
   },
   "homepage": "https://github.com/pivotal-cf/pui-starter",
-  "dependencies": {
-    "pivotal-ui": "^9.0.0",
-    "react-svg-loader": "^1.1.1",
-    "url-loader": "^0.5.9"
-  }
+  "dependencies": {}
 }
