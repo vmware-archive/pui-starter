@@ -1,5 +1,5 @@
 ---
 applications:
-  - name: react-starter
+  - name: pivotal-ui-starter
     path: public
     memory: 64MB

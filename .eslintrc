@@ -7,10 +7,6 @@
     "jasmine": true
   },
 
-  "ecmaFeatures": {
-    "modules": true
-  },
-
   "globals": {
     "MyReactStarter": true,
     "root": true,
