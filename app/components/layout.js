@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOMServer from 'react-dom/server';
 
 export default function Layout({config, children}) {
   const configJs = `window.${config.globalNamespace} = {animation: true, config: ${JSON.stringify(config)}}`;
-  console.log(configJs)
   const metas = Layout.metas.map((props, key) => <meta {...props} {...{key}}/>);
   return (
     <html>

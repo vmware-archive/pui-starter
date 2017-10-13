@@ -58,7 +58,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-hot-loader": "^3.0.0-beta.6",
-    "react-svg-loader": "^1.1.1",
+    "react-svg-loader": "2.0.0",
     "recluster": "^0.4.5",
     "require-dir": "^0.3.2",
     "rosie": "^1.6.0",

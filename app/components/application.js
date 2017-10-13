@@ -18,7 +18,6 @@ class Application extends React.Component {
 
   render() {
     const {config, store, router} = this.props;
-    console.log({store, router})
     const routeOptions = [
       {
         route: '/todoList',
@@ -41,14 +40,14 @@ class Application extends React.Component {
     const currentRoute = store.currentRoute || '/todoList';
 
     const buttons = routeOptions.map(({route, name}) => {
-      const buttonClass =  currentRoute === route ? 'btn btn-default' : 'btn btn-default-alt';
+      const buttonClass = currentRoute === route ? 'btn btn-default' : 'btn btn-default-alt';
       return (<Col>
         <button
         type="button"
         key={route}
         className={buttonClass}
         onClick={e => {e.preventDefault(); Actions.setRoute(route);}}>{name}</button>
-      </Col>)
+      </Col>);
     });
 
     return (
