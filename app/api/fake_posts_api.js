@@ -1,6 +1,6 @@
 const {fetchJson} = require('../../helpers/fetch_helper');
 
-const apiUrl = 'http://jsonplaceholder.typicode.com';
+const apiUrl = 'https://jsonplaceholder.typicode.com';
 
 const FakePostsApi = {
   fetch() {
