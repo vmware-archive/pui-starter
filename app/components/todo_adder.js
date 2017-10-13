@@ -2,6 +2,7 @@ const React = require('react');
 const {Actions} = require('p-flux');
 import {DefaultButton} from 'pivotal-ui/react/buttons';
 import {Input} from 'pivotal-ui/react/inputs';
+import {Icon} from 'pivotal-ui/react/iconography';
 
 class TodoAdder extends React.Component {
   constructor(props, context) {
@@ -35,7 +36,9 @@ class TodoAdder extends React.Component {
               onChange: this.change
             }}/>
           </div>
-          <DefaultButton type="submit">Submit!</DefaultButton>
+          <DefaultButton type="submit" icon={<Icon src="checkmark" />} iconPosition="right">
+            Submit!
+          </DefaultButton>
         </form>
       </div>
     );
