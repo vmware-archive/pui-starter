@@ -1,5 +1,6 @@
 const MainDispatcher = {
   setRoute({data}) {
+    this.$store.refine('currentRoute').set(data);
     this.router.navigate(data);
   },
   todoItemCreate({data}) {

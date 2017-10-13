@@ -69,6 +69,7 @@ class Router extends React.Component {
 
   render() {
     const {pageName} = this.state;
+
     const Page = PAGES[pageName];
     return (
       <Page {...this.props}/>

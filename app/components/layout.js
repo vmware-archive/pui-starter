@@ -4,12 +4,16 @@ import ReactDOMServer from 'react-dom/server';
 
 export default function Layout({config, children}) {
   const configJs = `window.${config.globalNamespace} = {animation: true, config: ${JSON.stringify(config)}}`;
+  console.log(configJs)
   const metas = Layout.metas.map((props, key) => <meta {...props} {...{key}}/>);
   return (
     <html>
-    <head>{metas}</head>
+    <head>
+      <title>Pivotal UI Starter</title>
+      {metas}
+    </head>
     <body>
-    <div id="root" dangerouslySetInnerHTML={children && {__html: ReactDOMServer.renderToString(children)}}/>
+    <div id="root">{children}</div>
     <script dangerouslySetInnerHTML={{__html: configJs}}/>
     </body>
     </html>

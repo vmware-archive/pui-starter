@@ -1,8 +1,9 @@
 const React = require('react');
 import PropTypes from 'prop-types';
-const {useStore} = require('p-flux');
 const {useRouter} = require('./use_router');
 const Router = require('./router');
+import {Actions, useStore} from 'p-flux';
+import {Row, Col} from 'pivotal-ui/react/grids';
 
 if (typeof document !== 'undefined') {
   require('../stylesheets/application.scss');
@@ -17,15 +18,46 @@ class Application extends React.Component {
 
   render() {
     const {config, store, router} = this.props;
+    console.log({store, router})
+    const routeOptions = [
+      {
+        route: '/todoList',
+        name: 'Todo List!'
+      },
+      {
+        route: '/apiPage',
+        name: 'Page that hits an api'
+      },
+      {
+        route: '/users/new',
+        name: 'Create New User'
+      },
+      {
+        route: '/users/list',
+        name: 'All Users'
+      }
+    ];
+
+    const currentRoute = store.currentRoute || '/todoList';
+
+    const buttons = routeOptions.map(({route, name}) => {
+      const buttonClass =  currentRoute === route ? 'btn btn-default' : 'btn btn-default-alt';
+      return (<Col>
+        <button
+        type="button"
+        key={route}
+        className={buttonClass}
+        onClick={e => {e.preventDefault(); Actions.setRoute(route);}}>{name}</button>
+      </Col>)
+    });
+
     return (
       <div className="pui-react-starter">
-        <a href="todoList" onClick={e => {e.preventDefault(); router.navigate('/todoList');}}>Todo List!</a>
+        <Row className="btn-group" role="group" aria-label="...">
+          {buttons}
+        </Row>
         <br/>
-        <a href="apiPage" onClick={e => {e.preventDefault(); router.navigate('/apiPage');}}>Page that hits an api</a>
-        <br/>
-        <a href="createNewUser" onClick={e => {e.preventDefault(); router.navigate('/users/new');}}>Create New User</a>
-        <br/>
-        <a href="userList" onClick={e => {e.preventDefault(); router.navigate('/users/list');}}> All Users</a>
+
         <Router {...{router, config, ...store}}/>
       </div>
     );
