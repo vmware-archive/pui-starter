@@ -4,15 +4,8 @@
   margin: 20px auto;
 }
 
-.row.btn-group {
-  display: flex;
+.grid.btn-group {
   justify-content: space-between;
-  padding: 10px;
-
-  &.row:before, &.row:after {
-    content: none;
-
-  }
 }
 
 h3 {
