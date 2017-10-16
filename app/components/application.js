@@ -16,6 +16,11 @@ class Application extends React.Component {
     router: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
   };
 
+  componentDidMount() {
+    const pathname = (window && window.location.pathname) || '/todoList';
+    Actions.setRoute(pathname);
+  }
+
   render() {
     const {config, store, router} = this.props;
     const routeOptions = [
