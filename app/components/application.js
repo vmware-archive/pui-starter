@@ -42,7 +42,8 @@ class Application extends React.Component {
       }
     ];
 
-    const currentRoute = store.currentRoute || '/todoList';
+    const currentRoute = store.currentRoute === '/'
+      ? '/todoList' : (store.currentRoute || '/todoList');
 
     const buttons = routeOptions.map(({route, name}) => {
       const buttonClass = currentRoute === route ? 'btn btn-default' : 'btn btn-default-alt';
