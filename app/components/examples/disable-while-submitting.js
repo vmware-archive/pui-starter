@@ -65,7 +65,7 @@ export default () => (
     }, {
       cols: [{
         className: 'txt-r mtxl',
-        field: ({canReset, reset, canSubmit, submitting}) => (
+        field: ({canReset, reset, canSubmit, saving}) => (
           <div>
             <PrimaryButton {...{
               alt: true,
@@ -75,8 +75,8 @@ export default () => (
             <PrimaryButton {...{
               disabled: !canSubmit(),
               type: 'submit',
-              icon: submitting && <Icon src="spinner-sm"/>
-            }}>{submitting ? 'Submitting' : 'Submit'}</PrimaryButton>
+              icon: saving && <Icon src="spinner-sm"/>
+            }}>{saving ? 'Submitting' : 'Submit'}</PrimaryButton>
           </div>
         )
       }]
