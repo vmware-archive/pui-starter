@@ -1,0 +1,69 @@
+.form fieldset {
+  margin: 0;
+}
+
+.form-unit {
+  .post-label {
+    margin-left: $base-unit / 2;
+  }
+
+  .grid-inline {
+    align-items: center;
+
+    & > .col:first-child > .row-label {
+      margin-right: $base-unit;
+    }
+
+    & > .col:last-child > .row-label {
+      margin-left: $base-unit;
+    }
+  }
+
+  .row-label {
+    display: block;
+    line-height: 4 * $base-unit;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .row-help {
+    line-height: 2 * $base-unit;
+    min-height: 2 * $base-unit;
+    font-weight: 400;
+    font-size: 12px;
+  }
+
+  .tooltip .icon {
+    font-size: 2 * $base-unit;
+    margin-left: $base-unit / 2;
+
+    svg {
+      fill: $dark-5;
+    }
+  }
+
+  &.has-label {
+    .row-label {
+      min-height: 4 * $base-unit;
+    }
+  }
+
+  &.has-error {
+    .row-help {
+      color: $input-invalid-text;
+    }
+
+    input,
+    input[type="email"],
+    input[type="number"],
+    input[type="search"],
+    input[type="text"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="password"],
+    textarea,
+    select {
+      border: 1px solid $input-border-invalid;
+    }
+  }
+}

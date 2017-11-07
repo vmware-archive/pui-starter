@@ -1,10 +1,27 @@
 import React from 'react';
-import {DefaultButton, PrimaryButton} from 'pivotal-ui/react/buttons'
-import {FormUnit, Form, Input} from './pui/forms'
+
+class Example extends React.Component {
+  render() {
+    const {title, description, example} = this.props;
+    const Child = require(`./examples/${example}`);
+    return (
+      <div>
+        <h1>{title}</h1>
+        <p>{description}</p>
+        <Child/>
+        <hr/>
+      </div>
+    );
+  }
+}
 
 export default class FormPage extends React.Component {
   componentDidMount() {
+    require('pivotal-ui/css/alignment');
     require('pivotal-ui/css/buttons');
+    require('pivotal-ui/css/flex-grids');
+    require('pivotal-ui/css/forms');
+    require('pivotal-ui/css/tooltips');
     require('pivotal-ui/css/typography');
     require('pivotal-ui/css/whitespace');
   }
@@ -12,245 +29,40 @@ export default class FormPage extends React.Component {
   render() {
     return (
       <div className="form-page">
-        <h1 className="mbxxxl">Anatomy of the form unit</h1>
-        <FormUnit {...{
-          input: <Input placeholder="Input"/>
+        <Example {...{
+          title: 'Grid layout of fields',
+          description: 'Form elements are laid out in an 8pt flex grid via a JSON interface.',
+          example: 'layout'
         }}/>
-        <FormUnit {...{
-          className: 'mbxxxxl',
-          label: 'Email',
-          info: 'some info',
-          optional: true,
-          input: <Input placeholder="Enter email"/>,
-          helpBlock: 'The format is generally name@website.com'
+        <Example {...{
+          title: 'Form Unit',
+          description: 'Composed of a label, tooltip, optional text, field, and help/error text.',
+          example: 'form-unit'
         }}/>
-        <Form {...{
-          className: 'mbxxxxl',
-          rows: [[{
-            label: 'Email',
-            input: <Input placeholder="Enter email"/>,
-            helpBlock: 'The format is generally name@website.com'
-          }], [{
-            label: 'Email',
-            input: <Input placeholder="Enter email"/>,
-            helpBlock: 'The format is generally name@website.com'
-          }]]
+        <Example {...{
+          title: 'Initial Value',
+          description: 'A Form Unit can be provided an initial value. The reset callback can be attached to a button to reset all fields to their initial values',
+          example: 'initial-value'
         }}/>
-        <Form {...{
-          className: 'mbxxxxl',
-          rows: [[{
-            label: 'Email',
-            input: <Input placeholder="Enter email"/>
-          }], [{
-            label: 'Email',
-            input: <Input placeholder="Enter email"/>
-          }]]
+        <Example {...{
+          title: 'Inline Form Unit',
+          description: 'Form Units can also be laid out horizontally, with labels before or after the field. The login form below has an afterSubmit callback that resets the username and password.',
+          example: 'inline-form-unit'
         }}/>
-        <Form {...{
-          className: 'mbxxxxl',
-          rows: [[{
-            input: <Input placeholder="Enter email"/>
-          }], [{
-            input: <Input placeholder="Enter email"/>
-          }]]
+        <Example {...{
+          title: 'Composite Field',
+          description: 'Form Unit fields can be complex composites. This Form Unit\'s field is a PUI Table. Its state is an object with three booleans, for each checkbox. The Select All checkbox is able to read and update the state of each field.',
+          example: 'composite-field'
         }}/>
-        <hr/>
-        <h1 className="mbxxxl">States</h1>
-        <h3>Disabled</h3>
-        <Form {...{
-          rows: [[{
-            label: 'Email',
-            input: <Input {...{
-              placeholder: 'Enter email',
-              disabled: true
-            }}/>
-          }]]
+        <Example {...{
+          title: 'Disable Fields While Submitting',
+          description: 'When submitting, all fields are disabled. A prop is passed to composite fields so that they can render themselves as disabled.',
+          example: 'disable-while-submitting'
         }}/>
-        <h3>ReadOnly</h3>
-        <Form {...{
-          rows: [[{
-            label: 'Email',
-            input: <Input {...{
-              placeholder: 'Enter email',
-              readOnly: true
-            }}/>
-          }]]
-        }}/>
-        <h3>Info Icon</h3>
-        <Form {...{
-          rows: [[{
-            label: 'Email',
-            info: 'The light tooltip is used for an explanation of an important item. The medium size width is good for 3 lines of text.',
-            optional: true,
-            input: <Input {...{placeholder: 'Enter email',}}/>
-          }]]
-        }}/>
-        <h3>Optional</h3>
-        <Form {...{
-          rows: [[{
-            label: 'Email',
-            info: 'some info',
-            optional: true,
-            input: <Input {...{placeholder: 'Enter email',}}/>
-          }]]
-        }}/>
-        <h3>Optional</h3>
-        <Form {...{
-          rows: [[{
-            label: 'Email',
-            optional: true,
-            input: <Input {...{placeholder: 'Enter email',}}/>
-          }]]
-        }}/>
-        <hr/>
-        <h3>Large Size</h3>
-        <Form {...{
-          rows: [[{
-            size: 'lg',
-            label: 'Large Label',
-            input: <Input {...{
-              size: 'lg',
-              placeholder: 'Large Input',
-            }}/>
-          }, {
-            size: 'lg',
-            label: 'Large Select',
-            input: (<select {...{
-              className: 'input-lg',
-              placeholder: 'Select',
-            }}>
-              <option disabled>Select</option>
-            </select>)
-          }]]
-        }}/>
-        <hr/>
-        <h3>Small Size</h3>
-        <Form {...{
-          rows: [[{
-            size: 'sm',
-            label: 'Small Label',
-            input: <Input {...{
-              size: 'sm',
-              placeholder: 'Small Label',
-            }}/>
-          }, {
-            size: 'sm',
-            label: 'Small Select',
-            input: (<select {...{
-              className: 'input-sm',
-              placeholder: 'Select',
-            }}>
-              <option disabled>Select</option>
-            </select>)
-          }]]
-        }}/>
-        <hr/>
-        <h1 className="mbxxxl">Block Forms</h1>
-        <Form {...{
-          style: {
-            border: '2px solid #e2f3fe',
-            borderRadius: '4px',
-            width: '688px',
-            padding: '16px'
-          },
-          rows: [[{
-            label: 'Instance Name',
-            info: 'some info',
-            input: <Input/>
-          }], [{
-            label: 'Add to Space',
-            input: (<select className="select">
-              <option>Development</option>
-            </select>)
-          }], [{
-            label: 'Bind to App',
-            optional: true,
-            input: (<select className="select">
-              <option>App-101-g3</option>
-            </select>)
-          }], [{
-            label: 'Bind to Route',
-            optional: true,
-            input: (<select className="select">
-              <option>[do not bind]</option>
-            </select>)
-          }, {
-            fixed: true,
-            input: <DefaultButton alt>Create Route</DefaultButton>
-          }], [{
-            label: <h4>Additional Configuration</h4>
-          }], [{}, {
-            className: 'mtl',
-            fixed: true,
-            input: (<div>
-              <PrimaryButton alt>Cancel</PrimaryButton>
-              <PrimaryButton>Create</PrimaryButton>
-            </div>)
-          }]]
-        }}/>
-        <hr/>
-        <h1 className="mbxxxl">Inline-Block Forms</h1>
-        <h3>Inline-Block Format</h3>
-        <Form {...{
-          rows: [[{
-            label: 'Email',
-            helpBlock: 'The format is generally name@website.com',
-            input: <Input {...{placeholder: 'Enter email'}}
-                          style={{display: 'inline-block'}}/>
-          }, {
-            label: 'Password',
-            input: <Input type="password"/>
-          }, {
-            fixed: true,
-            input: <PrimaryButton>Sign In</PrimaryButton>
-          }]]
-        }}/>
-        <h3 className="mtxxxl">Two Column Form</h3>
-        <Form {...{
-          rows: [[{
-            label: 'FirstName',
-            input: <Input {...{placeholder: 'First name'}}/>
-          }, {
-            label: 'Last Name',
-            input: <Input {...{placeholder: 'Last Name'}}/>
-          }], [{
-            label: 'Email',
-            helpBlock: 'The format is generally name@website.com',
-            input: <Input {...{placeholder: 'Enter email'}}/>
-          }, {
-            label: 'Password',
-            input: <Input type="password"/>
-          }], [{
-            label: 'Street',
-            input: (<div className="grid">
-              <div className="col">
-                <Input {...{placeholder: 'Street address'}}/>
-              </div>
-              <div className="col col-fixed">
-                <DefaultButton alt>Generate</DefaultButton>
-              </div>
-            </div>)
-          }, {
-            label: 'City',
-            input: <Input {...{placeholder: 'City name'}}/>
-          }], [{
-            label: 'State',
-            input: (<select className="select">
-              <option disabled>Select a state</option>
-            </select>)
-          }, {
-            label: 'Country',
-            input: (<select className="select">
-              <option disabled>Select a country</option>
-            </select>)
-          }], [{}, {
-            className: 'mtl',
-            fixed: true,
-            input: (<div>
-              <PrimaryButton alt>Cancel</PrimaryButton>
-              <PrimaryButton>Create</PrimaryButton>
-            </div>)
-          }]]
+        <Example {...{
+          title: 'Submission Error Handling',
+          description: 'This form has a 10% chance of success. An onSubmitError callback can parse the error and assign parts of it to specific fields, or to a general error area. The form can then be reset, or re-submitted. When submission succeeds, the errors disappear from the form.',
+          example: 'on-submit-error'
         }}/>
       </div>
     );
