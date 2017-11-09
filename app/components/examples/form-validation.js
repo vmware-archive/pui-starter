@@ -12,8 +12,8 @@ export const Jsx = () => (
         field: () => <Input type="number" id="form-validation-number"/>,
         help: 'from 1 to 100',
         validator: value => {
+          if (value === '') return;
           const parsed = parseInt(value, 10);
-          console.log({value, parsed})
           if (isNaN(parsed)) return 'Not a number';
           if (parsed > 100) return 'Must be <= 100';
           if (parsed < 1) return 'Must be >= 1';
@@ -50,6 +50,7 @@ export const code = `<Form {...{
       field: () => <Input type="number"/>,
       help: 'from 1 to 100',
       validator: value => {
+        if (value === '') return;
         const parsed = parseInt(value, 10);
         if (isNaN(parsed)) return 'Not a number';
         if (parsed > 100) return 'Must be <= 100';
