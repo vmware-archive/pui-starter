@@ -1,19 +1,28 @@
 import React from 'react';
+import {Grid, FlexCol} from 'pivotal-ui/react/flex-grids';
 
 class Example extends React.Component {
   render() {
     const {title, description, example} = this.props;
-    const Child = require(`./examples/${example}`);
+    const {Jsx, code} = require(`./examples/${example}`);
     return (
       <div>
-        <h1>{title}</h1>
-        <p>{description}</p>
-        <Child/>
+        <Grid>
+          <FlexCol>
+            <h1>{title}</h1>
+            <p>{description}</p>
+            <Jsx/>
+          </FlexCol>
+          <FlexCol>
+            {code && <pre>{code}</pre>}
+          </FlexCol>
+        </Grid>
         <hr/>
       </div>
     );
   }
 }
+
 
 export default class FormPage extends React.Component {
   componentDidMount() {
@@ -30,7 +39,7 @@ export default class FormPage extends React.Component {
     return (
       <div className="form-page">
         <Example {...{
-          title: 'Grid layout of fields',
+          title: 'Grid Layout of Fields',
           description: 'Form elements are laid out in an 8pt flex grid via a JSON interface.',
           example: 'layout'
         }}/>
@@ -43,6 +52,11 @@ export default class FormPage extends React.Component {
           title: 'Initial Value',
           description: 'A Form Unit can be provided an initial value. The reset callback can be attached to a button to reset all fields to their initial values',
           example: 'initial-value'
+        }}/>
+        <Example {...{
+          title: 'Form Validation',
+          description: 'Each field can have a validation callback. Entering a number that is not between 1 and 100 will show an error and disable form submission.',
+          example: 'form-validation'
         }}/>
         <Example {...{
           title: 'Inline Form Unit',
@@ -61,7 +75,7 @@ export default class FormPage extends React.Component {
         }}/>
         <Example {...{
           title: 'Submission Error Handling',
-          description: 'This form has a 10% chance of success. An onSubmitError callback can parse the error and assign parts of it to specific fields, or to a general error area. The form can then be reset, or re-submitted. When submission succeeds, the errors disappear from the form.',
+          description: 'This form has an error every other submit. An onSubmitError callback can parse the error and assign parts of it to specific fields, or to a general error area. The form can then be reset, or re-submitted. When submission succeeds, the errors disappear from the form.',
           example: 'on-submit-error'
         }}/>
       </div>

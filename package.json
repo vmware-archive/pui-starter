@@ -47,7 +47,7 @@
     "phantomjs-prebuilt": "^2.1.13",
     "pivotal-js-jasmine-matchers": "^0.1.1",
     "pivotal-js-react-test-helpers": "^0.1.0",
-    "pivotal-ui": "^10.3.0",
+    "pivotal-ui": "^10.3.1",
     "portastic": "^1.0.1",
     "postcss-loader": "^2.0.6",
     "postcss-smart-import": "^0.7.5",

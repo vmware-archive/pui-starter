@@ -3,69 +3,64 @@ import {PrimaryButton} from 'pivotal-ui/react/buttons';
 import {Icon} from 'pivotal-ui/react/iconography';
 import {Form, Input} from '../pui/form';
 
-export default () => (
+let error = true;
+
+export const Jsx = () => (
   <Form {...{
     rows: [{
       cols: [{
-        name: 'generalError',
+        name: 'general-error',
         optional: true
       }]
     }, {
       cols: [{
-        id: 'on-submit-error-first-name',
         name: 'first-name',
         label: 'First Name',
         initialValue: 'Jonathan',
-        field: () => <Input/>
+        field: () => <Input id="on-submit-error-first-name"/>
       }, {
-        id: 'on-submit-error-middle-initial',
         name: 'middle-initial',
-        className: 'col-fixed',
+        className: 'col-fixed middle-initial',
         label: 'M',
         optional: true,
         optionalText: '(Opt)',
-        field: () => <Input style={{width: '48px'}}/>
+        field: () => <Input id="on-submit-error-middle-initial"/>
       }, {
-        id: 'on-submit-error-last-name',
         name: 'last-name',
         label: 'Last Name',
         initialValue: 'Berney',
-        field: () => <Input/>
+        field: () => <Input id="on-submit-error-last-name"/>
       }]
     }, {
       cols: [{
-        id: 'on-submit-error-address',
         name: 'address',
         label: 'Street Address',
         initialValue: '875 Howard St.',
-        field: () => <Input/>
+        field: () => <Input id="on-submit-error-address"/>
       }]
     }, {
       cols: [{
-        id: 'on-submit-error-city',
         name: 'city',
         label: 'City',
         initialValue: 'San Francisco',
-        field: () => <Input/>
+        field: () => <Input id="on-submit-error-city"/>
       }, {
-        id: 'on-submit-error-state',
         name: 'state',
         className: 'col-fixed',
         label: 'State',
         initialValue: 'CA',
         field: () => (
-          <select>
+          <select id="on-submit-error-state">
             <option>CA</option>
             <option>NY</option>
           </select>
         )
       }, {
-        id: 'on-submit-error-zip-code',
         name: 'zip-code',
         className: 'col-fixed',
         label: 'Zip Code',
         initialValue: '94000',
-        field: () => <Input/>
+        field: () => <Input id="on-submit-error-zip-code"/>
       }]
     }, {
       cols: [{
@@ -86,13 +81,58 @@ export default () => (
         )
       }]
     }],
-    onSubmit: () => new Promise(((res, rej) => setTimeout(() => Math.random() > .9 ? res() : rej({
-      'first-name': 'Should have been named Elliot',
-      'last-name': 'Cannot exceed four characters',
-      address: 'Please specify floor number',
-      city: 'Go Giants!',
-      generalError: 'HTTP RESPONSE CODE 502: GATEWAY ERROR'
-    }), 2000))),
-    onSubmitError: e => e
+    onSubmit: () => new Promise(((res, rej) => setTimeout(() => {
+      error ? rej({
+        general: 'HTTP RESPONSE CODE 502: GATEWAY ERROR',
+        first: 'Should have been named Elliot',
+        last: 'Cannot exceed four characters',
+        addr1: 'Please specify floor number',
+        city: 'Go Giants!'
+      }) : res();
+      error = !error;
+    }, 2000))),
+    onSubmitError: e => ({
+      'general-error': e.general,
+      'first-name': e.first,
+      'middle-initial': e.middle,
+      'last-name': e.last,
+      address: e.addr1,
+      city: e.city,
+      state: e.state,
+      'zip-code': e.zip
+    })
   }}/>
 );
+
+export const code = `/*
+error: {
+  general: 'HTTP RESPONSE CODE 502: GATEWAY ERROR',
+  first: 'Should have been named Elliot',
+  last: 'Cannot exceed four characters',
+  addr1: 'Please specify floor number',
+  city: 'Go Giants!'
+}
+*/
+
+<Form {...{
+  rows: [{
+    cols: [{name: 'general-error', optional: true}]
+  }, {
+    cols: [{
+      name: 'first-name',
+      label: 'First Name',
+      initialValue: 'Jonathan',
+      field: () => <Input/>
+    }]
+  }],
+  onSubmitError: e => ({
+    'general-error': e.general,
+    'first-name': e.first,
+    'middle-initial': e.middle,
+    'last-name': e.last,
+    address: e.addr1,
+    city: e.city,
+    state: e.state,
+    'zip-code': e.zip
+  })
+}}/>`;

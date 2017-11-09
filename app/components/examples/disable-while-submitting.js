@@ -3,64 +3,57 @@ import {PrimaryButton} from 'pivotal-ui/react/buttons';
 import {Icon} from 'pivotal-ui/react/iconography';
 import {Form, Input} from '../pui/form';
 
-export default () => (
+export const Jsx = () => (
   <Form {...{
     rows: [{
       cols: [{
-        id: 'disable-while-submitting-first-name',
         name: 'first-name',
         label: 'First Name',
         initialValue: 'Jonathan',
-        field: () => <Input/>
+        field: () => <Input id="disable-while-submitting-first-name"/>
       }, {
-        id: 'disable-while-submitting-middle-initial',
         name: 'middle-initial',
-        className: 'col-fixed',
+        className: 'col-fixed middle-initial',
         label: 'M',
         optional: true,
         optionalText: '(Opt)',
-        field: () => <Input style={{width: '48px'}}/>
+        field: () => <Input id="disable-while-submitting-middle-initial"/>
       }, {
-        id: 'disable-while-submitting-last-name',
         name: 'last-name',
         label: 'Last Name',
         initialValue: 'Berney',
-        field: () => <Input/>
+        field: () => <Input id="disable-while-submitting-last-name"/>
       }]
     }, {
       cols: [{
-        id: 'disable-while-submitting-address',
         name: 'address',
         label: 'Street Address',
         initialValue: '875 Howard St.',
-        field: () => <Input/>
+        field: () => <Input id="disable-while-submitting-address"/>
       }]
     }, {
       cols: [{
-        id: 'disable-while-submitting-city',
         name: 'city',
         label: 'City',
         initialValue: 'San Francisco',
-        field: () => <Input/>
+        field: () => <Input id="disable-while-submitting-city"/>
       }, {
-        id: 'disable-while-submitting-state',
         name: 'state',
         className: 'col-fixed',
         label: 'State',
         initialValue: 'CA',
         field: () => (
-          <select>
+          <select id="disable-while-submitting-state">
             <option>CA</option>
             <option>NY</option>
           </select>
         )
       }, {
-        id: 'disable-while-submitting-zip-code',
         name: 'zip-code',
         className: 'col-fixed',
         label: 'Zip Code',
         initialValue: '94000',
-        field: () => <Input/>
+        field: () => <Input id="disable-while-submitting-zip-code"/>
       }]
     }, {
       cols: [{
@@ -84,3 +77,15 @@ export default () => (
     onSubmit: () => new Promise((res => setTimeout(res, 2000)))
   }}/>
 );
+
+export const code = `<Form {...{
+  rows: [{
+    cols: [{
+      field: ({saving}) => (
+        <CompositeComponent {...{
+          disabled: saving
+        }}/>
+      )
+    }]
+  }]
+}}/>`;

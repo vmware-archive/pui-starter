@@ -8,14 +8,13 @@ const deepClone = o => JSON.parse(JSON.stringify(o));
 
 export class Form extends React.Component {
   static propTypes = {
-    rows: PropTypes.array,
-    onSubmit: PropTypes.func,
-    onSubmitError: PropTypes.func,
-    afterSubmit: PropTypes.func
+    rows: PropTypes.array.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    onSubmitError: PropTypes.func.isRequired,
+    afterSubmit: PropTypes.func.isRequired
   };
 
   static defaultProps = {
-    initialState: {},
     rows: [],
     onSubmit: () => {
     },
@@ -27,13 +26,13 @@ export class Form extends React.Component {
   constructor(props) {
     super(props);
     const {rows} = props;
-    const requiredParameters = [];
+    const requiredFields = [];
     const initial = {};
     rows.forEach(({cols}) => {
       cols
         .filter(({name}) => name)
         .forEach(({optional, name, initialValue}) => {
-          optional || requiredParameters.push(name);
+          optional || requiredFields.push(name);
           initial[name] = initialValue || '';
         });
     });
@@ -44,10 +43,11 @@ export class Form extends React.Component {
       current,
       saving: false,
       errors: {},
-      requiredParameters
+      requiredFields
     };
 
     this.onChange = this.onChange.bind(this);
+    this.onBlur = this.onBlur.bind(this);
     this.reset = this.reset.bind(this);
     this.canSubmit = this.canSubmit.bind(this);
     this.canReset = this.canReset.bind(this);
@@ -55,22 +55,58 @@ export class Form extends React.Component {
     this.setState = this.setState.bind(this);
   }
 
-  onChange(name) {
-    return (...args) => {
+  onClick(name) {
+    return () => {
       this.setState({
         current: {
           ...this.state.current,
-          [name]: args.length > 1 ? args[1] : args[0] && args[0].target.value
+          [name]: !this.state.current[name]
         }
       });
     };
   }
 
-  canSubmit() {
-    const {initial, current, saving, requiredParameters} = this.state;
+  onChange(name, validator) {
+    return (...args) => {
+      const value = args.length > 1 ? args[1] : args[0] && args[0].target.value;
+      const nextState = {
+        current: {
+          ...this.state.current,
+          [name]: value
+        }
+      };
+      const error = validator && validator(value);
+      if (!error) {
+        nextState.errors = {
+          ...this.state.errors,
+          [name]: undefined
+        };
+      }
+      this.setState(nextState);
+    };
+  }
+
+  onBlur({name, validator}) {
+    return ({target: {value}}) => {
+      const error = validator(value);
+      this.setState({
+        errors: {
+          ...this.state.errors,
+          [name]: error
+        }
+      });
+    };
+  }
+
+  canSubmit({checkRequiredFields} = {}) {
+    const {rows} = this.props;
+    const {initial, current, saving, requiredFields} = this.state;
     return !saving
       && Object.keys(initial).find(key => !deepEqual(initial[key], current[key]))
-      && !requiredParameters.find(key => !current[key]);
+      && (checkRequiredFields
+        ? checkRequiredFields(this.state.current)
+        : !requiredFields.find(key => !current[key]))
+      && !rows.find(({cols}) => cols.find(({name, validator}) => validator && validator(this.state.current[name])));
   }
 
   canReset() {
@@ -86,23 +122,10 @@ export class Form extends React.Component {
     const nextState = {saving: false};
     try {
       const response = await onSubmit({initial, current});
-      this.setState({
-        ...nextState,
-        current,
-        initial: deepClone(current),
-        errors: {}
-      });
-      afterSubmit({
-        state: this.state,
-        setState: this.setState,
-        response,
-        reset: this.reset
-      });
+      this.setState({...nextState, current, initial: deepClone(current), errors: {}});
+      afterSubmit({state: this.state, setState: this.setState, response, reset: this.reset});
     } catch (err) {
-      this.setState({
-        ...nextState,
-        errors: (onSubmitError && onSubmitError(err)) || {}
-      });
+      this.setState({...nextState, errors: (onSubmitError && onSubmitError(err)) || {}});
       throw err;
     }
   }
@@ -117,25 +140,18 @@ export class Form extends React.Component {
     const {saving} = this.state;
 
     return (
-      <form {...{
-        className: classnames('form', className),
-        onSubmit: this.onSubmit
-      }}>
+      <form {...{className: classnames('form', className), onSubmit: this.onSubmit}}>
         <fieldset {...{disabled: saving}}>
           {rows.map(({cols = [], wrapper}, key) => {
-            const hasLabel = cols.find(({label}) => label);
+            const hasLabel = cols.filter(({label}) => label).length > 0;
             const hasInline = cols.find(({inline}) => inline);
 
             const row = (
               <div {...{className: 'grid', key}}>
-                {cols.map(({className, field, name, help, id, ...rest}, key) => (
-                  <div {...{
-                    className: classnames('col', className),
-                    key: `col${key}`
-                  }}>
+                {cols.map(({className, field, name, help, validator, ...rest}, key) => (
+                  <div {...{className: classnames('col', className), key: `col${key}`}}>
                     <FormUnit {...{
                       className: classnames({'has-label': hasLabel && !hasInline}),
-                      id,
                       hasError: !!this.state.errors[name],
                       ...rest,
                       field: (() => {
@@ -147,15 +163,22 @@ export class Form extends React.Component {
                           saving: this.state.saving,
                           setState: this.setState,
                           state: this.state,
-                          onChange: this.onChange(name)
+                          onChange: this.onChange(name, validator)
                         });
                         if (!element) return null;
-                        return React.cloneElement(element, {
-                          id,
-                          name: element.props.name || name,
-                          value: element.props.value || this.state.current[name],
-                          onChange: element.props.onChange || this.onChange(name)
-                        });
+                        const isCheckbox = element.props.type === 'checkbox';
+                        const props = {
+                          name: element.props.name || name
+                        };
+                        if (isCheckbox) {
+                          props.defaultChecked = this.state.current[name];
+                          props.onClick = this.onClick(name);
+                        } else {
+                          props.value = element.props.value || this.state.current[name];
+                          props.onChange = element.props.onChange || this.onChange(name, validator);
+                          validator && (props.onBlur = this.onBlur({name, validator}));
+                        }
+                        return React.cloneElement(element, props);
                       })(),
                       help: this.state.errors[name] || help
                     }}/>
@@ -164,10 +187,7 @@ export class Form extends React.Component {
               </div>
             );
 
-            return wrapper ? React.cloneElement(wrapper(this.state), {
-              children: row,
-              key
-            }) : row;
+            return wrapper ? React.cloneElement(wrapper(this.state), {children: row, key}) : row;
           })}
         </fieldset>
       </form>

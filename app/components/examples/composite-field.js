@@ -77,7 +77,7 @@ const table = ({state, state: {current, current: {orgRoles}}, setState}) => (
   }}/>
 );
 
-export default () => (
+export const Jsx = () => (
   <Form {...{
     rows: [{
       cols: [{
@@ -93,3 +93,20 @@ export default () => (
     }]
   }}/>
 );
+
+export const code = `const table = ({state, setState}) => <AdvancedTable {...{/* ... */}}/>
+
+<Form {...{
+  rows: [{
+    cols: [{
+      name: 'orgRoles',
+      label: 'Assign Org Roles',
+      initialValue: {
+        manager: false,
+        billingManager: false,
+        auditor: false
+      },
+      field: table
+    }]
+  }]
+}}/>`;

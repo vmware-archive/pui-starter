@@ -2,29 +2,26 @@ import React from 'react';
 import {PrimaryButton} from 'pivotal-ui/react/buttons'
 import {Form, Input} from '../pui/form';
 
-export default () => (
+export const Jsx = () => (
   <Form {...{
     rows: [{
       cols: [{
-        id: 'initial-value-first-name',
         name: 'first-name',
         label: 'First Name',
         initialValue: 'Jonathan',
-        field: () => <Input/>
+        field: () => <Input id="initial-value-first-name"/>
       }, {
-        id: 'initial-value-middle-initial',
         name: 'middle-initial',
-        className: 'col-fixed',
+        className: 'col-fixed middle-initial',
         label: 'M',
         optional: true,
         optionalText: '(Opt)',
-        field: () => <Input style={{width: '48px'}}/>
+        field: () => <Input id="initial-value-middle-initial"/>
       }, {
-        id: 'initial-value-last-name',
         name: 'last-name',
         label: 'Last Name',
         initialValue: 'Berney',
-        field: () => <Input/>
+        field: () => <Input id="initial-value-last-name"/>
       }, {
         className: 'col-fixed',
         field: ({canReset, reset}) => (
@@ -38,3 +35,14 @@ export default () => (
     }]
   }}/>
 );
+
+export const code = `<Form {...{
+  rows: [{
+    cols: [{
+      name: 'first-name',
+      label: 'First Name',
+      initialValue: 'Jonathan',
+      field: () => <Input/>
+    }]
+  }]
+}}/>`;

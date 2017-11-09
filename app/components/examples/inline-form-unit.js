@@ -3,52 +3,46 @@ import {PrimaryButton} from 'pivotal-ui/react/buttons'
 import {Icon} from 'pivotal-ui/react/iconography';
 import {Form, Input, Toggle} from '../pui/form';
 
-export default () => (
+export const Jsx = () => (
   <div>
     <Form {...{
       rows: [{
         cols: [{
-          id: 'inline-form-unit-checkbox-1',
           name: 'checkbox',
           label: 'Checkbox 1',
-          field: () => <Input type="checkbox"/>,
+          field: () => <Input type="checkbox" id="inline-form-unit-checkbox-1"/>,
           inline: true,
           labelPosition: 'after'
         }, {
-          id: 'inline-form-unit-checkbox-2',
           name: 'checkbox',
           label: 'Checkbox 2',
-          field: () => <Input type="checkbox"/>,
+          field: () => <Input type="checkbox" id="inline-form-unit-checkbox-2"/>,
           inline: true,
           labelPosition: 'after'
         }, {
-          id: 'inline-form-unit-toggle',
           name: 'toggle',
           label: 'Toggle',
-          field: () => <Toggle/>,
+          field: () => <Toggle id="inline-form-unit-toggle"/>,
           inline: true,
           labelPosition: 'after'
         }]
       }, {
         cols: [{
-          id: 'inline-form-unit-radio-1',
           name: 'radio',
           label: 'Radio 1',
-          field: () => <Input type="radio"/>,
+          field: () => <Input type="radio" id="inline-form-unit-radio-1"/>,
           inline: true,
           labelPosition: 'after'
         }, {
-          id: 'inline-form-unit-radio-2',
           name: 'radio',
           label: 'Radio 2',
-          field: () => <Input type="radio"/>,
+          field: () => <Input type="radio" id="inline-form-unit-radio-2"/>,
           inline: true,
           labelPosition: 'after'
         }, {
-          id: 'inline-form-unit-radio-3',
           name: 'radio',
           label: 'Radio 3',
-          field: () => <Input type="radio"/>,
+          field: () => <Input type="radio" id="inline-form-unit-radio-3"/>,
           inline: true,
           labelPosition: 'after'
         }]
@@ -57,16 +51,14 @@ export default () => (
     <Form {...{
       rows: [{
         cols: [{
-          id: 'inline-form-unit-username',
           name: 'username',
           label: 'Username',
-          field: () => <Input/>,
+          field: () => <Input id="inline-form-unit-username"/>,
           inline: true
         }, {
-          id: 'inline-form-unit-password',
           name: 'password',
           label: 'Password',
-          field: () => <Input type="password"/>,
+          field: () => <Input type="password" id="inline-form-unit-password"/>,
           inline: true
         }, {
           className: 'col-fixed',
@@ -92,3 +84,25 @@ export default () => (
     }}/>
   </div>
 );
+
+export const code = `<Form {...{
+  rows: [{
+    cols: [{
+       name: 'checkbox',
+       label: 'Checkbox 1',
+       field: () => <Input type="checkbox"/>,
+       inline: true,
+       labelPosition: 'after'
+    }]
+  }]
+}}/>
+<Form {...{
+  rows: [{
+    cols: [{
+      name: 'username',
+      label: 'Username',
+      field: () => <Input/>,
+      inline: true
+    }]
+  }]
+}}/>`;
