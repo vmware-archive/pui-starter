@@ -8,13 +8,13 @@ export const Jsx = () => (
     <Form {...{
       rows: [{
         cols: [{
-          name: 'checkbox',
+          name: 'checkbox1',
           label: 'Checkbox 1',
           field: () => <Input type="checkbox" id="inline-form-unit-checkbox-1"/>,
           inline: true,
           labelPosition: 'after'
         }, {
-          name: 'checkbox',
+          name: 'checkbox2',
           label: 'Checkbox 2',
           field: () => <Input type="checkbox" id="inline-form-unit-checkbox-2"/>,
           inline: true,
@@ -88,7 +88,7 @@ export const Jsx = () => (
 export const code = `<Form {...{
   rows: [{
     cols: [{
-       name: 'checkbox',
+       name: 'checkbox1',
        label: 'Checkbox 1',
        field: () => <Input type="checkbox"/>,
        inline: true,
