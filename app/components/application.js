@@ -1,9 +1,10 @@
 const React = require('react');
 import PropTypes from 'prop-types';
-const {useRouter} = require('./use_router');
-const Router = require('./router');
-import {Actions, useStore} from 'p-flux';
+import {Actions} from 'p-flux';
 import {Grid, FlexCol} from 'pivotal-ui/react/flex-grids';
+import {Icon} from 'pivotal-ui/react/iconography';
+import 'pivotal-ui/css/typography';
+import 'pivotal-ui/css/whitespace';
 
 if (typeof document !== 'undefined') {
   require('../stylesheets/application.scss');
@@ -22,65 +23,32 @@ class Application extends React.Component {
   }
 
   render() {
-    const {config, store, router} = this.props;
-    const routeOptions = [
-      {
-        route: '/todoList',
-        name: 'Todo List!'
-      },
-      {
-        route: '/apiPage',
-        name: 'Page that hits an api'
-      },
-      {
-        route: '/users/new',
-        name: 'Create New User'
-      },
-      {
-        route: '/users/list',
-        name: 'All Users'
-      }
-    ];
-
-    const currentRoute = store.currentRoute === '/'
-      ? '/todoList' : (store.currentRoute || '/todoList');
-
-    const buttons = routeOptions.map(({route, name}) => {
-      const buttonClass = currentRoute === route ? 'btn btn-default' : 'btn btn-default-alt';
-      return (<FlexCol fixed={true}>
-        <button
-        type="button"
-        key={route}
-        className={buttonClass}
-        onClick={e => {e.preventDefault(); Actions.setRoute(route);}}>{name}</button>
-      </FlexCol>);
-    });
-
     return (
-      <div className="pui-react-starter">
-        <Grid className="btn-group" role="group" aria-label="...">
-          {buttons}
+      <div>
+        <Grid className="header man">
+          <FlexCol fixed className="logo">
+            <Icon src="add"/>
+          </FlexCol>
+          <FlexCol className="title">
+            Pivotal <strong>Web Services</strong>
+          </FlexCol>
+          <FlexCol fixed>Login</FlexCol>
         </Grid>
-        <br/>
-
-        <Router {...{router, config, ...store}}/>
+        <Grid className="man">
+          <FlexCol fixed className="sidebar phn">
+            <div className="section">
+              Sidebar
+            </div>
+            <ul>
+              <li>hello</li>
+              <li>world</li>
+            </ul>
+          </FlexCol>
+          <FlexCol className="main">Main Content</FlexCol>
+        </Grid>
       </div>
     );
   }
 }
 
-const EnhancedApplication = useStore(useRouter(Application),
-  {
-    store: require('../store'),
-    actions: [],
-    dispatcherHandlers: [
-      require('../dispatchers/main_dispatcher'),
-      require('../dispatchers/api_dispatcher')
-    ],
-    /* eslint-disable no-console */
-    onDispatch: (event) => {console.info('dispatching event', event);}
-    /* eslint-enable no-console */
-  }
-);
-
-module.exports = EnhancedApplication;
+module.exports = Application;
