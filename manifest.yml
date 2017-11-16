@@ -1,5 +1,5 @@
 ---
 applications:
-  - name: pivotal-ui-starter
+  - name: apps-manager-layout
     path: public
     memory: 64MB
