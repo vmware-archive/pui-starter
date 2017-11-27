@@ -5910,9 +5910,9 @@ pivotal-js-react-test-helpers@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/pivotal-js-react-test-helpers/-/pivotal-js-react-test-helpers-0.1.0.tgz#0f951e6d00c4fcd9678ac69b29c59af888c25910"
 
-pivotal-ui@^9.0.0:
-  version "9.1.2"
-  resolved "https://registry.yarnpkg.com/pivotal-ui/-/pivotal-ui-9.1.2.tgz#0964df86cbc5677d2b16206e17d9d3d5e52ce394"
+pivotal-ui@^10.0.0:
+  version "10.3.2"
+  resolved "https://registry.yarnpkg.com/pivotal-ui/-/pivotal-ui-10.3.2.tgz#075120359f6a1d033056be2741b40520da9f96e5"
   dependencies:
     classnames "^2.1.2"
     from "^0.1.3"
@@ -5925,9 +5925,9 @@ pivotal-ui@^9.0.0:
     pui-react-animation "^1.0.2"
     raf "^3.1.0"
     react-addons-shallow-compare "^15.0.1"
-    react-dom "^15.5.4"
-    react-tether "^0.5.7"
+    react-dom "^16.0.0"
     scroll-into-view "^1.3.0"
+    tether "^1.3.7"
     through "^2.3.8"
     trie-search "^1.0.1"
 
@@ -6349,7 +6349,7 @@ promzard@^0.3.0:
   dependencies:
     read "1"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -6582,14 +6582,14 @@ react-deep-force-update@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-2.1.1.tgz#8ea4263cd6455a050b37445b3f08fd839d86e909"
 
-react-dom@^15.5.4, react-dom@^15.6.1:
-  version "15.6.2"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.6.2.tgz#41cfadf693b757faf2708443a1d1fd5a02bef730"
+react-dom@^16.0.0:
+  version "16.1.1"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.1.1.tgz#b2e331b6d752faf1a2d31399969399a41d8d45f8"
   dependencies:
-    fbjs "^0.8.9"
+    fbjs "^0.8.16"
     loose-envify "^1.1.0"
-    object-assign "^4.1.0"
-    prop-types "^15.5.10"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
 
 react-hot-loader@^3.0.0-beta.6:
   version "3.0.0"
@@ -6621,14 +6621,7 @@ react-svg-loader@2.0.0:
     lodash.isplainobject "^4.0.6"
     svgo "^0.7.2"
 
-react-tether@^0.5.7:
-  version "0.5.7"
-  resolved "https://registry.yarnpkg.com/react-tether/-/react-tether-0.5.7.tgz#418ea61041b65b958271478489b71a3572f01422"
-  dependencies:
-    prop-types "^15.5.8"
-    tether "^1.3.7"
-
-react@>=0.13.3, react@^15.6.1:
+react@>=0.13.3:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/react/-/react-15.6.2.tgz#dba0434ab439cfe82f108f0f511663908179aa72"
   dependencies:
@@ -6637,6 +6630,15 @@ react@>=0.13.3, react@^15.6.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
     prop-types "^15.5.10"
+
+react@^16.0.0:
+  version "16.1.1"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.1.1.tgz#d5c4ef795507e3012282dd51261ff9c0e824fe1f"
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
 
 read-cache@^1.0.0:
   version "1.0.0"
