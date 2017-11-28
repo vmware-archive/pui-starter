@@ -59,19 +59,19 @@ class Application extends React.Component {
   }
 
   render() {
-    return (
-        [<Grid>
-          <FlexCol>
-            <Menu data={data}/>
-          </FlexCol>
-        </Grid>,
-        <Grid>
-          <FlexCol/>
-          <FlexCol className="mrxxl">
-            <FormExample/>
-          </FlexCol>
-        </Grid>]
-    );
+    return [
+      <Grid key="menu-listing">
+        <FlexCol>
+          <Menu data={data}/>
+        </FlexCol>
+      </Grid>,
+      <Grid key="menu-form">
+        <FlexCol/>
+        <FlexCol className="mrxxl">
+          <FormExample/>
+        </FlexCol>
+      </Grid>
+    ];
   }
 }
 
