@@ -6,8 +6,14 @@ const ApiDispatcher = {
       this.dispatch({type: 'updatePosts', data});
     });
   },
-  updatePosts({data}){
+  updatePosts({data}) {
     this.$store.merge({posts: data});
+  },
+  fetchMenu() {
+    return this.$store.refine('menu').get();
+  },
+  updateMenu({data}) {
+    this.$store.refine('menu').push(data);
   }
 };
 

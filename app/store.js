@@ -1,5 +1,6 @@
 module.exports = {
   currentRoute: null,
   todoItems: [],
-  users: []
+  users: [],
+  menu: []
 };
