@@ -1,1 +1,25 @@
 @import '_layout';
+
+.menu-item {
+  border-radius: 4px;
+
+  + .menu-item {
+    margin-top: 16px;
+  }
+}
+
+.gluten-free, .seasonal {
+  display: inline-block;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  padding: 0px 8px;
+  font-size: 10px;
+  height: 16px;
+  border-radius: 4px;
+  line-height: 16px;
+}
+
+.menu-item-title {
+  font-weight: bold;
+}
