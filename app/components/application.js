@@ -4,6 +4,7 @@ const {useRouter} = require('./use_router');
 import {Actions, useStore} from 'p-flux';
 import FormExample from './forms';
 import Menu from './menu';
+import MenuTable from './menu_table';
 import {Grid, FlexCol} from 'pivotal-ui/react/flex-grids';
 import 'pivotal-ui/css/alignment';
 import 'pivotal-ui/css/whitespace';
@@ -33,6 +34,12 @@ class Application extends React.Component {
         <FlexCol/>
         <FlexCol className="mrxxl">
           <Menu {...{data}}/>
+        </FlexCol>
+      </Grid>,
+      <Grid>
+        <FlexCol/>
+        <FlexCol>
+          <MenuTable {...{data}}/>
         </FlexCol>
       </Grid>,
       <Grid key="menu-form">
