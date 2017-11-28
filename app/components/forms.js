@@ -35,7 +35,7 @@ export default class FormExample extends React.Component {
               <option value="5">{pepper}{pepper}{pepper}{pepper}{pepper}</option>
             </select>
           </FormCol>
-          <FormCol fixed inline name="gluten-free" label="Gluten Free" labelPosition="after" optional optionalText="">
+          <FormCol fixed inline name="glutenFree" label="Gluten Free" labelPosition="after" optional optionalText="">
             <Input type="checkbox"/>
           </FormCol>
           <FormCol fixed inline name="seasonal" label="Seasonal" labelPosition="after" optional optionalText="">
