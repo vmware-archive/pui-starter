@@ -5866,7 +5866,7 @@ performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
 
-phantomjs-prebuilt@^2.1.13, phantomjs-prebuilt@^2.1.14:
+phantomjs-prebuilt@^2.1.13:
   version "2.1.15"
   resolved "https://registry.yarnpkg.com/phantomjs-prebuilt/-/phantomjs-prebuilt-2.1.15.tgz#20f86e82d3349c505917527745b7a411e08b3903"
   dependencies:
@@ -5910,16 +5910,15 @@ pivotal-js-react-test-helpers@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/pivotal-js-react-test-helpers/-/pivotal-js-react-test-helpers-0.1.0.tgz#0f951e6d00c4fcd9678ac69b29c59af888c25910"
 
-pivotal-ui@^10.0.0:
-  version "10.3.2"
-  resolved "https://registry.yarnpkg.com/pivotal-ui/-/pivotal-ui-10.3.2.tgz#075120359f6a1d033056be2741b40520da9f96e5"
+pivotal-ui@../pivotal-ui/dist:
+  version "11.0.0"
   dependencies:
     classnames "^2.1.2"
+    deep-equal "^1.0.1"
     from "^0.1.3"
     lodash.sortby "^3.1.1"
     lodash.throttle "^3.0.2"
     lodash.uniqueid "^3.0.0"
-    phantomjs-prebuilt "^2.1.14"
     prismjs "0.0.1"
     pui-cursor "^3.0.4"
     pui-react-animation "^1.0.2"
