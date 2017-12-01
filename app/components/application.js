@@ -35,12 +35,12 @@ class Application extends React.Component {
           <FlexCol>
             <Menu {...{data}}/>
           </FlexCol>
-        </Grid>,
+        </Grid>
         <Grid gutter={false}>
           <FlexCol>
             <MenuTable {...{data}}/>
           </FlexCol>
-        </Grid>,
+        </Grid>
         <Grid gutter={false}>
           <FlexCol>
             <FormExample/>
