@@ -8,6 +8,7 @@ import MenuTable from './menu_table';
 import 'pivotal-ui/css/alignment';
 import 'pivotal-ui/css/box-shadows';
 import 'pivotal-ui/css/colors';
+import 'pivotal-ui/css/inputs';
 import 'pivotal-ui/css/typography';
 import 'pivotal-ui/css/whitespace';
 
