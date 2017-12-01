@@ -28,7 +28,7 @@ module.exports = {
     glutenFree: false,
     seasonal: false,
     spiciness: '4',
-    description: 'This is a description of food seven.'
+    description: 'This is a description of food six.'
   }, {
     name: 'Food Seven', price: '55.55', glutenFree: true, seasonal: true, spiciness: '1', description: ''
   }, {

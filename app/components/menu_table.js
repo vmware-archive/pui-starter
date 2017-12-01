@@ -31,11 +31,11 @@ export default class MenuTable extends React.Component {
       sortable: true
     }];
 
-    const rowDrawer = i => (
+    const rowDrawer = rowDatum => (
       <div className="table-drawer">
         <div className="table-drawer-content">
           <div className="table-drawer-container phxl">
-            {data[i].description || 'Nothing to say!' }
+            {rowDatum.description || 'Nothing to say!' }
           </div>
         </div>
       </div>

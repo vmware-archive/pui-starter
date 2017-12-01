@@ -5,8 +5,8 @@ export function withChristmasTree(Table) {
     render() {
       return this.renderTable(Table, {
         td: (props, {rowDatum, column: {attribute}}) => {
-          if (rowDatum[attribute] === true) return ({style: {backgroundColor: 'green'}});
-          else if (rowDatum[attribute] === false) return ({style: {backgroundColor: 'red'}});
+          if (['glutenFree', 'seasonal'].indexOf(attribute) === -1) return;
+          return rowDatum[attribute] ? {style: {backgroundColor: 'green'}} : {style: {backgroundColor: 'red'}};
         }
       })
     }
