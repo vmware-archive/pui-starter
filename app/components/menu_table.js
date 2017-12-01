@@ -1,13 +1,11 @@
 import React from 'react';
-import propTypes from 'prop-types';
 import {AdvancedTable} from 'pivotal-ui/react/table';
+import {prettifyContent} from '../../helpers/application_helper'
 import {withChristmasTree} from './christmas_tree_plugin';
 
-export default class MenuTable extends React.Component {
-  static propTypes = {
-    data: propTypes.array.isRequired
-  };
+const ChristmasTreeTable = withChristmasTree(AdvancedTable);
 
+export default class MenuTable extends React.Component {
   render() {
     const {data} = this.props;
     const columns = [{
@@ -16,7 +14,8 @@ export default class MenuTable extends React.Component {
     }, {
       attribute: 'price',
       displayName: 'Price',
-      sortable: true
+      sortable: true,
+      sortBy: (value) => parseInt(value)
     }, {
       attribute: 'glutenFree',
       displayName: 'Gluten Free',
@@ -28,21 +27,14 @@ export default class MenuTable extends React.Component {
     }, {
       attribute: 'spiciness',
       displayName: 'Spiciness',
-      sortable: true
+      sortable: true,
+      sortBy: (value) => parseInt(value)
     }];
 
-    const rowDrawer = (rowIndex, rowDatum) => (
-      <div className="table-drawer">
-        <div className="table-drawer-content">
-          <div className="table-drawer-container phxl">
-            {rowDatum.description || 'Nothing to say!' }
-          </div>
-        </div>
-      </div>
-    );
+    const rowDrawer = (rowIndex, rowDatum) => {
+      return prettifyContent(rowDatum.description || 'Nothing to say!');
+    };
 
-    const ChristmasTreeTable = withChristmasTree(AdvancedTable);
-
-    return (<ChristmasTreeTable {...{columns, data, rowDrawer}}/>);
+    return (<ChristmasTreeTable {...{data, columns, rowDrawer}}/>);
   }
 }

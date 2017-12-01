@@ -14,7 +14,15 @@ const helpers = {
     <option value="3">{pepper}{pepper}{pepper}</option>,
     <option value="4">{pepper}{pepper}{pepper}{pepper}</option>,
     <option value="5">{pepper}{pepper}{pepper}{pepper}{pepper}</option>
-  ].map((e, key) => React.cloneElement(e, {key}))
+  ].map((e, key) => React.cloneElement(e, {key})),
+
+  prettifyContent: (content) => (<div className="table-drawer">
+    <div className="table-drawer-content">
+      <div className="table-drawer-container phxl">
+        {content}
+      </div>
+    </div>
+  </div>)
 };
 
 module.exports = helpers;
