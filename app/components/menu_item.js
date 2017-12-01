@@ -1,27 +1,23 @@
-const React = require('react');
-import PropTypes from 'prop-types';
+import React from 'react';
 import {Grid, FlexCol} from 'pivotal-ui/react/flex-grids';
 import {pepper} from '../../helpers/application_helper';
 
-class MenuItem extends React.Component {
-  static propTypes = {
-    item: PropTypes.object
-  };
-
+export default class MenuItem extends React.Component {
   render() {
     const {item} = this.props;
     const {name, description, price, spiciness, seasonal, glutenFree} = item;
     const displayPrice = `$${(+price).toFixed(2)}`;
 
-    const seasonalIcon = seasonal &&
-      <span className="seasonal bg-brand-5 type-neutral-11">seasonal</span>;
-    const glutenFreeIcon = glutenFree &&
-      <span className="gluten-free bg-accent-1 type-neutral-11">gluten-free</span>;
+    const details = [
+      seasonal && 'seasonal',
+      glutenFree && 'gluten-free'
+    ].filter(i => i).join(', ');
+
     const spicinessInfo = <span className="spiciness">{pepper.repeat(spiciness)}</span>;
 
     return (
-      <Grid className="menu-item box-shadow-2">
-        <FlexCol className="pal">
+      <Grid className="menu-item box-shadow-1">
+        <FlexCol>
           <Grid className="menu-item-title">
             <FlexCol>{name}</FlexCol>
             <FlexCol fixed>{displayPrice}</FlexCol>
@@ -31,13 +27,10 @@ class MenuItem extends React.Component {
           </Grid>
           <Grid>
             <FlexCol>{spicinessInfo}</FlexCol>
-            {seasonal && <FlexCol fixed>{seasonalIcon}</FlexCol>}
-            {glutenFree && <FlexCol fixed>{glutenFreeIcon}</FlexCol>}
+            <FlexCol fixed>{details}</FlexCol>
           </Grid>
         </FlexCol>
       </Grid>
     );
   }
 }
-
-module.exports = MenuItem;
