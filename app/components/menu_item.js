@@ -11,7 +11,7 @@ class MenuItem extends React.Component {
   render() {
     const {item} = this.props;
     const {name, description, price, spiciness, seasonal, glutenFree} = item;
-    const displayPrice = `$${price.toFixed(2)}`;
+    const displayPrice = `$${(+price).toFixed(2)}`;
 
     const seasonalIcon = seasonal &&
       <span className="seasonal bg-brand-5 type-neutral-11">seasonal</span>;
