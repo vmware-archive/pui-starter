@@ -3,35 +3,32 @@ module.exports = {
   todoItems: [],
   users: [],
   menu: [{
-    name: 'Food One', price: '12.50', glutenFree: false, seasonal: true, spiciness: 2, description: ''
+    name: 'AppsMan Tom Yom Soup',
+    price: '12.50',
+    glutenFree: true,
+    seasonal: false,
+    spiciness: 2,
+    description: 'Monitor your Tom Yom intake.'
   }, {
-    name: 'Food Two',
+    name: 'Metrics Mango Salad',
     price: '47.99',
     glutenFree: true,
     seasonal: true,
     spiciness: '',
-    description: 'This is a description of food two.'
+    description: 'Chart your mango consumption!'
   }, {
-    name: 'Food Three',
+    name: 'Pivnet Pla Goong',
     price: '100',
     glutenFree: false,
-    seasonal: true,
-    spiciness: '5',
-    description: 'This is a description of food three. This is a description of food three. This is a description of food three. '
-  }, {
-    name: 'Food Four', price: '7.00', glutenFree: false, seasonal: true, spiciness: '3', description: ''
-  }, {
-    name: 'Food Five', price: '88.19', glutenFree: true, seasonal: false, spiciness: '3', description: ''
-  }, {
-    name: 'Food Six',
-    price: '123.45',
-    glutenFree: false,
     seasonal: false,
-    spiciness: '4',
-    description: 'This is a description of food six.'
+    spiciness: '5',
+    description: 'Grilled prawns with lemongrass, onion mint with chili paste.'
   }, {
-    name: 'Food Seven', price: '55.55', glutenFree: true, seasonal: true, spiciness: '1', description: ''
-  }, {
-    name: 'Food Eight', price: '415.99', glutenFree: true, seasonal: true, spiciness: '2', description: ''
+    name: 'BAM Pra Ram',
+    price: '7.00',
+    glutenFree: false,
+    seasonal: true,
+    spiciness: '3',
+    description: 'Enough said'
   }]
 };

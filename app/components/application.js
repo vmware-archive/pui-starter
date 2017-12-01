@@ -31,6 +31,7 @@ class Application extends React.Component {
     const data = Actions.fetchMenu();
     return (
       <div>
+        <h1>Pivotal Thai Stop</h1>
         <h2 className="h2">Menu</h2>
         <div className="mhl mbxxl">
           <Menu {...{data}}/>
