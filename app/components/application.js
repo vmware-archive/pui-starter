@@ -30,21 +30,18 @@ class Application extends React.Component {
   render() {
     const data = Actions.fetchMenu();
     return [
-      <Grid key="menu-listing" gutter={false} className="maxxl">
-        <FlexCol/>
-        <FlexCol className="mrxxl">
+      <Grid key="menu-listing" gutter={false} className="mhl mbxxl">
+        <FlexCol>
           <Menu {...{data}}/>
         </FlexCol>
       </Grid>,
-      <Grid>
-        <FlexCol/>
+      <Grid gutter={false}>
         <FlexCol>
           <MenuTable {...{data}}/>
         </FlexCol>
       </Grid>,
-      <Grid key="menu-form">
-        <FlexCol/>
-        <FlexCol className="mrxxl">
+      <Grid key="menu-form"  gutter={false}>
+        <FlexCol>
           <FormExample/>
         </FlexCol>
       </Grid>

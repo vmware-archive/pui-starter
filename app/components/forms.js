@@ -46,7 +46,7 @@ export default class FormExample extends React.Component {
           <FormCol>
             {({canReset, reset}) => <PrimaryButton alt disabled={!canReset()} onClick={reset}>Reset</PrimaryButton>}
           </FormCol>
-          <FormCol className="txt-r">
+          <FormCol fixed>
             {({canSubmit}) => <PrimaryButton type="submit" disabled={!canSubmit()}>Submit</PrimaryButton>}
           </FormCol>
         </FormRow>
