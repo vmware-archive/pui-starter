@@ -31,7 +31,7 @@ export default class MenuTable extends React.Component {
       sortable: true
     }];
 
-    const rowDrawer = rowDatum => (
+    const rowDrawer = (rowIndex, rowDatum) => (
       <div className="table-drawer">
         <div className="table-drawer-content">
           <div className="table-drawer-container phxl">
