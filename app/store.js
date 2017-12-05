@@ -23,12 +23,5 @@ module.exports = {
     seasonal: false,
     spiciness: '5',
     description: 'Grilled prawns with lemongrass, onion mint with chili paste.'
-  }, {
-    name: 'BAM Pra Ram',
-    price: '7.00',
-    glutenFree: false,
-    seasonal: true,
-    spiciness: '3',
-    description: 'Enough said'
   }]
 };
