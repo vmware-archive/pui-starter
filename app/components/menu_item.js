@@ -12,22 +12,6 @@ export default class MenuItem extends React.Component {
       seasonal && 'seasonal'
     ].filter(i => i).join(', ');
 
-    return (
-      <Grid className="menu-item box-shadow-1">
-        <FlexCol>
-          <Grid className="menu-item-title">
-            <FlexCol>{name}</FlexCol>
-            <FlexCol fixed>${(+price).toFixed(2)}</FlexCol>
-          </Grid>
-          <Grid>
-            <FlexCol>{description}</FlexCol>
-          </Grid>
-          <Grid>
-            <FlexCol>{renderPeppers(spiciness)}</FlexCol>
-            <FlexCol fixed className="h6">{details}</FlexCol>
-          </Grid>
-        </FlexCol>
-      </Grid>
-    );
+    return null;
   }
 }
