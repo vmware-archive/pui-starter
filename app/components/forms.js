@@ -17,7 +17,7 @@ export default class FormExample extends React.Component {
             <input/>
           </FormCol>
           <FormCol name="price" label="Price" fixed validator={val => {
-            if (+val < 0) return 'we need to make money!!'
+            if (+val < 0) return 'we need to make money!!';
           }}>
             <input type="number"/>
           </FormCol>
@@ -41,9 +41,10 @@ export default class FormExample extends React.Component {
           </FormCol>
         </FormRow>
         <FormRow>
-          <FormCol>
+          <FormCol fixed>
             {({canReset, reset}) => <PrimaryButton alt disabled={!canReset()} onClick={reset}>Reset</PrimaryButton>}
           </FormCol>
+          <FormCol />
           <FormCol fixed>
             {({canSubmit}) => <PrimaryButton type="submit" disabled={!canSubmit()}>Submit</PrimaryButton>}
           </FormCol>

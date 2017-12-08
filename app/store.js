@@ -2,6 +2,7 @@ module.exports = {
   currentRoute: '',
   todoItems: [],
   users: [],
+  tab: 0,
   menu: [{
     name: 'AppsMan Tom Yom Soup',
     price: '12.50',

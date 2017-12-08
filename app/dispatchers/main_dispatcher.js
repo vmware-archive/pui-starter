@@ -11,6 +11,12 @@ const MainDispatcher = {
   },
   userSet({data}) {
     this.$store.merge({userId: data});
+  },
+  setTab({data}) {
+    this.$store.refine('tab').set(data);
+  },
+  getTab() {
+    return this.$store.refine('tab').get();
   }
 };
 

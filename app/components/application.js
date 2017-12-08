@@ -24,11 +24,6 @@ class Application extends React.Component {
     router: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {tab: 0};
-  }
-
   componentDidMount() {
     const pathname = (window && window.location.pathname) || '/todoList';
     Actions.setRoute(pathname);
@@ -36,15 +31,15 @@ class Application extends React.Component {
 
   render() {
     const data = Actions.fetchMenu();
-    const {tab} = this.state;
+    const tab = Actions.getTab();
 
     return (
       <div>
         <h1>Pivotal Thai Stop</h1>
 
         <div className="mvxl txt-c">
-          <DefaultButton onClick={() => this.setState({tab: 0})} alt={tab !== 0}>Menu</DefaultButton>
-          <DefaultButton onClick={() => this.setState({tab: 1})} alt={tab !== 1}>Admin</DefaultButton>
+          <DefaultButton onClick={() => Actions.setTab(0)} alt={tab !== 0}>Menu</DefaultButton>
+          <DefaultButton onClick={() => Actions.setTab(1)} alt={tab !== 1}>Admin</DefaultButton>
         </div>
 
         <div hidden={tab !== 0}>
