@@ -7,7 +7,7 @@ export function withChristmasTree(Table) {
         td: (props, {rowDatum, column: {attribute}}) => {
           if (['glutenFree', 'seasonal'].indexOf(attribute) === -1) return;
 
-          return rowDatum[attribute] ? {style: {backgroundColor: '#edffd9'}} : {style: {backgroundColor: '#ffd9db'}};
+          return rowDatum[attribute] ? {style: {backgroundColor: 'lightgreen'}} : {style: {backgroundColor: 'pink'}};
         }
       });
     }
