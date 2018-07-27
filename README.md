@@ -1,3 +1,7 @@
+# DEPRECATED
+
+Use [Create React App](https://github.com/facebook/create-react-app) and see this [guide](https://styleguide.pivotal.io/) on how to integrate Pivotal UI.
+
 # Pivotal UI Starter
 
 Pivotal UI Starter is a todoApp project with much of the tooling in place you would need for a fully-featured React application.
